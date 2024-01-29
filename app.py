@@ -1,6 +1,7 @@
 import dns.resolver
 import dns.exception
 
+
 def query_dns_records(domain, record_type):
     try:
         answers = dns.resolver.resolve(domain, record_type)
@@ -13,9 +14,19 @@ def query_dns_records(domain, record_type):
 def main(domain):
 
     # Query various DNS record types
-    record_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'TXT', 'SRV', 'SOA', 'CAA']
-    for record_type in record_types:
-        query_dns_records(domain, record_type)
+    record_types = {'A': 'Address',
+                    'AAAA': 'Quad-A',
+                    'CNAME': 'Canonical Name',
+                    'MX': 'Mail Exchange',
+                    'NS': 'Name Server',
+                    'PTR': 'Pointer',
+                    'TXT': 'Text',
+                    'SRV': 'Service',
+                    'SOA': 'Start of Authority',
+                    'CAA': 'Certification Authority Authorization'}
+    for key, item in record_types.items():
+        print(f'\n****\n{item} Record:')
+        query_dns_records(domain, key)
 
 
 if __name__ == '__main__':
