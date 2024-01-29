@@ -1,2 +1,3 @@
 # dnswebsite
-Report DNS data for a website
+This script prompts the user for a domain name and then 
+returns DNS data related to it.
